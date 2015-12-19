@@ -24,7 +24,7 @@ module Spree
       }
 
       if source.gateway_customer_profile_id.present?
-        params = {token: source.gateway_customer_profile_id}
+        params = {token: CGI.escape(source.gateway_customer_profile_id)}
       elsif Spree::CieloConfig.generate_token
         params = generate_token source
 
@@ -179,7 +179,7 @@ module Spree
       if response[:'retorno-token'][:token][:'dados-token'][:'codigo-token']
         token = response[:'retorno-token'][:token][:'dados-token'][:'codigo-token']
         credit_card.update_attributes(gateway_customer_profile_id: token)
-        return { token: token }
+        return { token: CGI.escape(token) }
       end
     rescue
       {}
