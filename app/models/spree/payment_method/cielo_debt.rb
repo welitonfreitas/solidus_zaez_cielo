@@ -76,7 +76,7 @@ module Spree
     #
     def purchase(_amount, source, _gateway_options)
       transaction = Cielo::Transaction.new
-      ret = transaction.verify!(source.gateway_payment_profile_id)
+      ret = transaction.verify!(CGI.escape(source.gateway_payment_profile_id))
 
       if ret[:transacao][:status] == '6'
         ActiveMerchant::Billing::Response.new(true, Spree.t('cielo.messages.purchase_success'), {}, authorization: ret[:transacao][:tid])
@@ -102,7 +102,7 @@ module Spree
     #
     def authorize(_amount, source, _gateway_options)
       transaction = Cielo::Transaction.new
-      ret = transaction.verify!(source.gateway_payment_profile_id)
+      ret = transaction.verify!(CGI.escape(source.gateway_payment_profile_id))
 
       if ret[:transacao][:status] == '4'
         ActiveMerchant::Billing::Response.new(true, Spree.t('cielo.messages.authorize_success'), {}, authorization: ret[:transacao][:tid])
