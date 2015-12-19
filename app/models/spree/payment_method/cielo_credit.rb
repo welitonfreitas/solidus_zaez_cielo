@@ -200,7 +200,9 @@ module Spree
     #
     def mount_params(amount, source, params = {})
       cc_type = format_cc_type source.cc_type
-
+      
+      params[:token] = CGI.escape(params[:token])
+      
       if params[:parcelas] > 1
         product_value = Spree::CieloConfig[:product_value]
       else
