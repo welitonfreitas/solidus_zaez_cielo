@@ -1,7 +1,7 @@
 # encoding: UTF-8
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_zaez_cielo'
+  s.name        = 'solidus_zaez_cielo'
   s.version     = '3.0.1'
   s.summary     = 'Adds Cielo as a Payment Method to Spree Commerce'
   s.description = s.summary
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 3.1.0.beta'
+  s.add_dependency 'solidus_core', '~> 1.1.0'
   s.add_dependency 'cielo', '~> 0.1.5'
 
   s.add_development_dependency 'poltergeist', '~> 1.5.0'
