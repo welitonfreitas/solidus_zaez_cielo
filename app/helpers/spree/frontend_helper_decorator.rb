@@ -1,5 +1,5 @@
 module Spree
-  FrontendHelper.class_eval do
+  BaseHelper.class_eval do
 
     # Returns the credit cards with payment method CieloCredit
     #
